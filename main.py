@@ -110,7 +110,7 @@ with open((dirname + '/data/punks.csv'), 'w', newline='') as csvfile:
     writer.writerow(['image:'] + ['Name'] + ['Background'] + ['Punk type'] + ['Mouth'] + ['Accessory'] + ['Eyes'] + ['Head'] + ['Beard'] + ['Psych DNA'])
 
 
-    for x in range(0, 100):
+    for x in range(0, 1000):
         print('PsychPunk' + str(x))
 
         # determine background
@@ -152,15 +152,34 @@ with open((dirname + '/data/punks.csv'), 'w', newline='') as csvfile:
         print('Mouth:', p_mouth)
 
 
+        # determine beard
+        def beardchoice(p_type, beard):
+            if p_type == ['Male'][0] or p_type == ['Zombie'][0]:
+                b = random.choices(beard, weights = (50, 40 ,30 ,2 ,3 ,3 ,200), k=1)[0]
+                return b
+            else:
+                b = random.choices(beard, weights = (0, 0 ,0 ,0 ,0 ,0 ,100), k=1)[0]
+                return b
+
+        p_beard = beardchoice(p_type ,beard)
+        punk_beard = td.beard_dict.get(p_beard)
+
+
+        print('Beard:', p_beard)
+
+
         # determine accessory
-        def accessorychoice(p_type, faccessory, accessory):
+        def accessorychoice(p_type, p_beard, faccessory, accessory):
             if p_type == ['Female'][0]:
                 acc = random.choices(faccessory, weights = (20, 22, 5, 30, 10, 10, 15, 75), k=1)[0]
+                return acc
+            elif p_beard == ['Bushy beard'][0]:
+                acc = random.choices(accessory, weights = (0, 22, 5, 30, 10, 10, 15, 75), k=1)[0]
                 return acc
             else:
                 acc = random.choices(accessory, weights = (20, 22, 5, 30, 10, 10, 15, 75), k=1)[0]
                 return acc
-        p_acc = accessorychoice(p_type, faccessory, accessory)
+        p_acc = accessorychoice(p_type, p_beard, faccessory, accessory)
 
         if p_type == ['Female'][0]:
             punk_acc = td.facc_dict.get(p_acc)
@@ -239,22 +258,6 @@ with open((dirname + '/data/punks.csv'), 'w', newline='') as csvfile:
 
 
 
-        # determine beard
-        def beardchoice(p_type, beard):
-            if p_type == ['Male'][0] or p_type == ['Zombie'][0]:
-                b = random.choices(beard, weights = (50, 40 ,30 ,2 ,3 ,3 ,200), k=1)[0]
-                return b
-            else:
-                b = random.choices(beard, weights = (0, 0 ,0 ,0 ,0 ,0 ,100), k=1)[0]
-                return b
-
-        p_beard = beardchoice(p_type ,beard)
-        punk_beard = td.beard_dict.get(p_beard)
-
-
-        print('Beard:', p_beard)
-
-
         # determine psych-eyes
         def psycheyes(psychadeliceyes):
             pe = random.choices(psychadeliceyes, weights = (10, ) *51, k=1)[0]
@@ -321,7 +324,7 @@ with open((dirname + '/data/punks.csv'), 'w', newline='') as csvfile:
 
 
 # Creating .Json
-        data = {
+'''        data = {
             'name': name,
             'description': description,
             'image': image
@@ -717,4 +720,4 @@ with open((dirname + '/data/punks.csv'), 'w', newline='') as csvfile:
         comb4()
         removewhiteeye()
         eyepsych()
-        white2()
+        white2()'''
