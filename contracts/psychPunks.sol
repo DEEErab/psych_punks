@@ -11,8 +11,8 @@ contract psychpunks is ERC721Enumerable, Ownable {
     string public baseURI;
     string public baseExtenstion = ".json";
     uint256 public cost = 0.03 ether;
-    uint256 public maxSupply = 10000;
-    uint256 maxMintAmount = 20;
+    uint256 public maxSupply = 100;
+    uint256 maxMintAmount = 10;
     bool public paused = false;
     
     constructor(
@@ -21,7 +21,9 @@ contract psychpunks is ERC721Enumerable, Ownable {
         string memory _initBaseURI
     )   ERC721(_name, _symbol) {
         setBaseURI(_initBaseURI);
-        mint(msg.sender, 20);
+        mint(msg.sender, 10);
+        mint(msg.sender, 10);
+        mint(msg.sender, 10);
     }
     
     
