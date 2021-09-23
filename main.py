@@ -4,6 +4,7 @@ import random
 import csv
 import os
 import numpy as np
+import json
 
 
 dirname = os.path.dirname(__file__)
@@ -106,7 +107,7 @@ psychadelicmouth = list(pmk)
 with open((dirname + '/data/punks.csv'), 'w', newline='') as csvfile:
     writer = csv.writer(csvfile, delimiter=',',
                             quotechar=' ', quoting=csv.QUOTE_MINIMAL)
-    writer.writerow(  ['image:'] + ['Description:'] + ['Name'] + ['Background'] + ['Punk type'] + ['Mouth'] + ['Accessory'] + ['Eyes'] + ['Head'] + ['Beard'] + ['Psych DNA'])
+    writer.writerow(['image:'] + ['Name'] + ['Background'] + ['Punk type'] + ['Mouth'] + ['Accessory'] + ['Eyes'] + ['Head'] + ['Beard'] + ['Psych DNA'])
 
 
     for x in range(0, 100):
@@ -314,9 +315,55 @@ with open((dirname + '/data/punks.csv'), 'w', newline='') as csvfile:
         name = 'PsychPunk_' + str(x)
         metadataIMG = '/PsychPunk_' + str(x)
         image = ''
-        description = ''
+        description = 'PsychPunks is a collection of algorithmically generated trippy Punks.'
         row = x
-        writer.writerow([description, image, name, p_bg, p_type, p_mouth, p_acc, p_eyes, p_head, p_beard, Psych_DNA])
+        writer.writerow([image, name, p_bg, p_type, p_mouth, p_acc, p_eyes, p_head, p_beard, Psych_DNA])
+
+
+# Creating .Json
+        data = {
+            'name': name,
+            'description': description,
+            'image': image
+        }
+
+        data['attributes'] = []
+        
+        data['attributes'].append({
+            'trait_type': 'Background:',
+            'value': p_bg
+        })
+        data['attributes'].append({
+            'trait_type': 'Type:',
+            'value': p_type
+        })
+        data['attributes'].append({
+            'trait_type': 'Mouth:',
+            'value': p_mouth
+        })
+        data['attributes'].append({
+            'trait_type': 'Accessory:',
+            'value': p_acc
+        })
+        data['attributes'].append({
+            'trait_type': 'Eyes:',
+            'value': p_eyes
+        })
+        data['attributes'].append({
+            'trait_type': 'Head:',
+            'value': p_head
+        })
+        data['attributes'].append({
+            'trait_type': 'Beard:',
+            'value': p_beard
+        })
+        data['attributes'].append({
+            'trait_type': 'PsychDNA:',
+            'value': Psych_DNA
+        })
+
+        with open(dirname + '/data/metadata/origonal_data'+str(x)+'.json', 'w') as outfile:
+            json.dump(data, outfile)
 
 
 
