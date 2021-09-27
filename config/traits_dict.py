@@ -66,14 +66,14 @@ acc_dict = {'Chain': dirname + '/images/Acc/chain.png',
 'Vape': dirname + '/images/Acc/vape.png',
 'No Accessory': dirname + '/images/Acc/znone.png'}
 
-facc_dict = {'Chain': dirname + '/images/Acc/chain.png',
-'Cig': dirname + '/images/Acc/cig.png',
-'Clown nose': dirname + '/images/Acc/clown nose.png',
-'Earring': dirname + '/images/Acc/earring.png',
-'Mask': dirname + '/images/Acc/mask.png',
-'Pipe': dirname + '/images/Acc/pipe.png',
-'Vape': dirname + '/images/Acc/vape.png',
-'No Accessory': dirname + '/images/Acc/znone.png'}
+facc_dict = {'Chain': dirname + '/images/Facc/chain.png',
+'Cig': dirname + '/images/Facc/cig.png',
+'Clown nose': dirname + '/images/Facc/clown nose.png',
+'Earring': dirname + '/images/Facc/earring.png',
+'Mask': dirname + '/images/Facc/mask.png',
+'Pipe': dirname + '/images/Facc/pipe.png',
+'Vape': dirname + '/images/Facc/vape.png',
+'No Accessory': dirname + '/images/Facc/znone.png'}
 
 head_dict = {'Bandana': dirname + '/images/Head/bandana.png',
 'Beanie 1': dirname + '/images/Head/beanie.png',
